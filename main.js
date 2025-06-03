@@ -20,20 +20,18 @@ function createWindow() {
   win.loadFile('index.html');
 
   win.webContents.on('did-finish-load', async () => {
-    let ip = store.get('ip');
-    let port = store.get('port');
     let mahalAdi = store.get('mahalAdi');
     let mahalKodu = store.get('mahalKodu');
 
-    if (!ip || !port || !mahalAdi || !mahalKodu) {
-      ip = await prompt({ title: 'Config', label: 'IP Adresi:' });
-      port = await prompt({ title: 'Config', label: 'Port:' });
+    if (!mahalAdi || !mahalKodu) {
       mahalAdi = await prompt({ title: 'Config', label: 'mahalAdi:' });
       mahalKodu = await prompt({ title: 'Config', label: 'mahalKodu:' });
-      store.set({ ip, port, mahalAdi, mahalKodu });
+      store.set({ mahalAdi, mahalKodu });
     }
 
-    axios.post(`http://${ip}:${port}/grikod-calistir`, {
+    const endpoint = 'http://10.85.1.77:3000/grikod-calistir';
+
+    axios.post(endpoint, {
       mahalAdi,
       mahalKodu
     })
