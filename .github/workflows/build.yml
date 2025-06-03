@@ -16,11 +16,9 @@ jobs:
           node-version: 14
 
       - run: npm install
-
-      - name: Set GH_TOKEN
-        run: echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
-
       - run: npm run build
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
