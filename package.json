@@ -1,1 +1,30 @@
-
+{
+  "name": "alarm-app-keyos",
+  "version": "1.0.0",
+  "description": "Mahalle Alarm Bildirici",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "Gardaşın",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "electron-log": "^4.4.7",
+    "electron-prompt": "^1.7.0",
+    "electron-store": "^7.0.3"
+  },
+  "devDependencies": {
+    "electron": "^16.0.0",
+    "electron-builder": "^22.10.5"
+  },
+  "build": {
+    "appId": "com.mahal.alarm",
+    "productName": "Grikod Alarm",
+    "linux": {
+      "target": ["AppImage"],
+      "category": "Utility"
+    }
+  }
+}
